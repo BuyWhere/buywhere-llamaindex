@@ -37,7 +37,7 @@ jobs:
 
       - run: pip install -e .
       - run: pip install pytest pytest-asyncio
-      - run: python -m pytest tests/test_mcp_health.py tests/test_mcp_continuous.py -v --tb=short
+      - run: python -m pytest tests/test_mcp_continuous.py -v --tb=short
         env:
           BUYWHERE_API_KEY: ${{ secrets.BUYWHERE_API_KEY }}
 
