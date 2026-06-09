@@ -71,6 +71,16 @@ class BuyWhereClient:
 
         return response.json()
 
+    def health_check(self, timeout: Optional[float] = None) -> Any:
+        original_timeout = self._client.timeout
+        if timeout is not None:
+            self._client.timeout = timeout
+        try:
+            return self.get("/health")
+        finally:
+            if timeout is not None:
+                self._client.timeout = original_timeout
+
     def close(self) -> None:
         self._client.close()
 
